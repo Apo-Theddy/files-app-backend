@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  Android-service:
+    image: android-emulator
+    build: .
+    ports:
+      - 4725:4725
+    container_name: Android-Service
+    environment:
+      APPIM_PORT: 4725
+    privileged: true
+    command: bash -c './start_emu_headless.sh && ./start_appium.sh'
+    tty: true
+    stdin_open: true
